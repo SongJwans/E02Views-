@@ -16,6 +16,7 @@ public class SpinnersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spinners);
+
         // 데이터 목록
         String[] stringArray = {"집주소", "직장주소", "기타"};
 
@@ -24,7 +25,7 @@ public class SpinnersActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // spinner
-        Spinner spinner = findViewById(R.id.spinner_addressType);
+        Spinner spinner = (Spinner)findViewById(R.id.spinner_addressType);
         spinner.setAdapter(adapter);
 
         View.OnClickListener listener1 = new View.OnClickListener() {
@@ -39,17 +40,20 @@ public class SpinnersActivity extends AppCompatActivity {
                 String text2 = spinner2.getSelectedItem().toString();
 
                 String s = String.format("전화:%s(%d) 주소:%s(%d)", text1, index1, text2, index2);
-                Toast.makeText(SpinnersActivity.this,s,Toast.LENGTH_SHORT).show();
+                Toast.makeText(SpinnersActivity.this, s, Toast.LENGTH_SHORT).show();
             }
         };
+
 
         AdapterView.OnItemSelectedListener listener2 = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
                 String s = stringArray[i];
+
                 // Context 가 Activity 의 부모 클래스
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),  s, Toast.LENGTH_SHORT).show();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
